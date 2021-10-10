@@ -1,5 +1,6 @@
 export const listRoom = [
   {
+    id: 1,
     logo: "https://banner2.cleanpng.com/20190119/fxp/kisspng-logo-muong-thanh-hotel-hanoi-brand-bao-b-cao-cp-vit-thnh-5c4317fced3b33.8232157615479009249717.jpg",
     nameHotel: "Khách sạn Mường Thanh",
     date: "07-10-2021, Đà Nẵng",
@@ -11,6 +12,7 @@ export const listRoom = [
     address: "15 Lê Đình Lý, Quận Hải Châu",
   },
   {
+    id: 2,
     logo: "https://cdn10.agoda.net/images/mvc/default/agoda-logo-flat-2019.png?s=375x210&ar=16x9",
     nameHotel: "Khách sạn Galaxy",
     date: "08-10-2021, Tp Hồ chí Minh",
@@ -22,6 +24,7 @@ export const listRoom = [
     address: "45 Lê Độ, Quận Hải Châu",
   },
   {
+    id: 3,
     logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiy7swbtvuRXi-sxbawq7gTPtE9u8PMxQFlDUUId6p3t74x98do9HzlQk3J7lTs-vZrmk&usqp=CAU",
     nameHotel: "Khách sạn Minh Toàn",
     date: "06-10-2021, Đà Nẵng",
@@ -45,3 +48,32 @@ export const information = {
   image:
     "https://scr.vn/wp-content/uploads/2020/07/Avt-%C4%91%E1%BA%B9p-cho-n%E1%BB%AF-1.jpg",
 };
+export const location = [
+  {
+    image: "https://pdp.edu.vn/wp-content/uploads/2021/05/hinh-anh-sai-gon.jpg",
+    title: "TP.Hồ Chí Minh",
+  },
+  {
+    image:
+      "https://vtv1.mediacdn.vn/thumb_w/650/Uploaded/lanchi/2013_09_19/5.8_ava.jpg",
+    title: "Hà Nội",
+  },
+  {
+    image:
+      "http://static.cand.com.vn/Files/Image/hoaithu/2018/11/10/31e46aa0-8f78-4276-94e2-9d527da14d9f.jpg",
+    title: "Đà Nẵng",
+  },
+  {
+    image:
+      "http://static.cand.com.vn/Files/Image/hoaithu/2018/11/10/31e46aa0-8f78-4276-94e2-9d527da14d9f.jpg",
+    title: "Đà Ngãi",
+  },
+  {
+    image: "https://danangaz.com/wp-content/uploads/2019/07/ava-.jpg",
+    title: "Quảng Nam",
+  },
+  {
+    image: "https://danangaz.com/wp-content/uploads/2019/07/ava-.jpg",
+    title: "Quảng Trị",
+  },
+];

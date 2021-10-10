@@ -8,6 +8,7 @@ import {
   ScrollView,
   Dimensions,
   ActivityIndicator,
+  FlatList,
 } from "react-native";
 import {
   Header,
@@ -23,7 +24,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import { Foundation } from "@expo/vector-icons";
 const { height, width } = Dimensions.get("window");
-import { listRoom } from "../../db/db.js";
+import { listRoom, location } from "../../db/db.js";
 
 class Home extends Component {
   constructor(props) {
@@ -31,12 +32,14 @@ class Home extends Component {
     this.state = {
       data: [],
       search: "",
+      location: [],
     };
   }
 
   componentDidMount = () => {
     this.setState({
       data: listRoom,
+      location: location,
     });
   };
 
@@ -111,6 +114,55 @@ class Home extends Component {
             </View>
             <View
               style={{
+                padding: 10,
+                justifyContent: "center",
+                alignItems: "center",
+                flexDirection: "row",
+              }}
+            >
+              <ScrollView
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}
+              >
+                <View
+                  style={{
+                    marginRight: 20,
+                    justifyContent: "center",
+                    alignItems: "center",
+                    height: 100,
+                  }}
+                >
+                  <View style={styles.item2}>
+                    <Entypo name="location" size={24} color="red" />
+                  </View>
+                  <Text style={{ color: "#808080", marginTop: 3 }}>
+                    Gần bạn
+                  </Text>
+                </View>
+                {this.state.location.map((l, i) => (
+                  <View
+                    key={i}
+                    style={{
+                      marginRight: 20,
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Image
+                      source={{
+                        uri: l.image,
+                      }}
+                      style={styles.item1}
+                    />
+                    <Text style={{ color: "#808080", marginTop: 3 }}>
+                      {l.title}
+                    </Text>
+                  </View>
+                ))}
+              </ScrollView>
+            </View>
+            <View
+              style={{
                 width: "100%",
                 paddingLeft: 10,
               }}
@@ -122,7 +174,10 @@ class Home extends Component {
               </Text>
             </View>
             <View style={styles.recommend}>
-              <ScrollView horizontal={true}>
+              <ScrollView
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}
+              >
                 <View
                   style={{
                     flexDirection: "row",
@@ -170,6 +225,10 @@ class Home extends Component {
                 width: "100%",
                 paddingLeft: 15,
                 marginTop: 5,
+                marginBottom: 10,
+                flexDirection: "row",
+                justifyContent: "space-between",
+                width: "83%",
               }}
             >
               <Text
@@ -181,6 +240,20 @@ class Home extends Component {
               >
                 Danh sách phòng:
               </Text>
+              <TouchableOpacity
+                onPress={() => this.props.navigation.navigate("ListRoom")}
+              >
+                <Text
+                  style={{
+                    fontWeight: "bold",
+                    fontSize: 15,
+                    color: "blue",
+                    borderBottomWidth: 1,
+                  }}
+                >
+                  Xem thêm phòng
+                </Text>
+              </TouchableOpacity>
             </View>
             {this.state.data.map((l, i) => (
               <View key={i} style={styles.item}>
@@ -253,7 +326,10 @@ class Home extends Component {
                       Like
                     </Text>
                   </View>
-                  <View
+                  <TouchableOpacity
+                    onPress={() =>
+                      this.props.navigation.navigate("OrderRoom", { id: l.id })
+                    }
                     style={{
                       width: "50%",
                       justifyContent: "center",
@@ -264,17 +340,22 @@ class Home extends Component {
                     <Text style={{ fontWeight: "bold", color: "#694fad" }}>
                       Đặt phòng
                     </Text>
-                  </View>
+                  </TouchableOpacity>
                 </View>
                 <View style={{ height: 280, marginTop: 65 }}>
-                  <View style={{ alignItems: "center" }}>
+                  <TouchableOpacity
+                    onPress={() =>
+                      this.props.navigation.navigate("DetailRoom", { id: l.id })
+                    }
+                    style={{ alignItems: "center" }}
+                  >
                     <Image
                       style={styles.image1}
                       source={{
                         uri: l.image,
                       }}
                     />
-                  </View>
+                  </TouchableOpacity>
                   <View style={{ marginLeft: 10, marginTop: 10 }}>
                     <Text style={{ fontWeight: "bold", fontSize: 15 }}>
                       {l.title}
@@ -315,6 +396,21 @@ class Home extends Component {
 
 export default Home;
 const styles = StyleSheet.create({
+  item1: {
+    borderRadius: 50,
+    height: 50,
+    width: 50,
+  },
+  item2: {
+    borderRadius: 50,
+    borderColor: "#808080",
+    borderWidth: 1,
+    height: 50,
+    width: 50,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
   image: {
     width: width - 30,
     height: height * 0.3,
@@ -345,7 +441,7 @@ const styles = StyleSheet.create({
   },
   item: {
     width: width - 30,
-    height: height * 0.53,
+    height: 450,
     shadowOffset: { width: 0, height: 3 },
     shadowOpacity: 0.2,
     marginHorizontal: 16,

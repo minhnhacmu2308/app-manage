@@ -79,7 +79,7 @@ class Profile extends Component {
             </View>
           </View>
           <View
-            style={{ flexDirection: "row", marginTop: 20, marginBottom: 20 }}
+            style={{ flexDirection: "row", marginTop: 10, marginBottom: 20 }}
           >
             <Text style={styles.fonttext}>Ngày sinh :</Text>
             <Text style={styles.fonttextinfor}>
@@ -88,25 +88,25 @@ class Profile extends Component {
             </Text>
           </View>
           <View
-            style={{ flexDirection: "row", marginTop: 20, marginBottom: 20 }}
+            style={{ flexDirection: "row", marginTop: 10, marginBottom: 20 }}
           >
             <Text style={styles.fonttext}>Giới tính :</Text>
             <Text style={styles.fonttextinfor}> {this.state.info.gender}</Text>
           </View>
           <View
-            style={{ flexDirection: "row", marginTop: 20, marginBottom: 20 }}
+            style={{ flexDirection: "row", marginTop: 10, marginBottom: 20 }}
           >
             <Text style={styles.fonttext}>Nghề nghiệp:</Text>
             <Text style={styles.fonttextinfor}> {this.state.info.job}</Text>
           </View>
           <View
-            style={{ flexDirection: "row", marginTop: 20, marginBottom: 20 }}
+            style={{ flexDirection: "row", marginTop: 10, marginBottom: 20 }}
           >
             <Text style={styles.fonttext}>Số CMND:</Text>
             <Text style={styles.fonttextinfor}> {this.state.info.ID}</Text>
           </View>
           <View
-            style={{ flexDirection: "row", marginTop: 20, marginBottom: 20 }}
+            style={{ flexDirection: "row", marginTop: 10, marginBottom: 20 }}
           >
             <Text style={styles.fonttext}>Số điện thoại:</Text>
             <Text style={styles.fonttextinfor}>
@@ -115,7 +115,7 @@ class Profile extends Component {
             </Text>
           </View>
           <View
-            style={{ flexDirection: "row", marginTop: 20, marginBottom: 20 }}
+            style={{ flexDirection: "row", marginTop: 10, marginBottom: 20 }}
           >
             <Text style={styles.fonttext}>Quê quán:</Text>
             <Text style={styles.fonttextinfor}> {this.state.info.address}</Text>

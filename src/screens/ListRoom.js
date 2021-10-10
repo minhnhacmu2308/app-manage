@@ -32,19 +32,31 @@ class ListRoom extends Component {
       data: listRoom,
     });
   };
+  left = () => {
+    return (
+      <TouchableOpacity
+        onPress={() => this.props.navigation.goBack()}
+        style={{ marginLeft: 15, width: 50 }}
+      >
+        <Ionicons
+          style={{ marginTop: 1 }}
+          name="ios-arrow-back"
+          size={24}
+          color="#ffff"
+        />
+      </TouchableOpacity>
+    );
+  };
   render() {
     return (
       <View>
         <Header
-          leftComponent={() => <Feather name="menu" size={24} color="#ffff" />}
+          leftComponent={() => this.left()}
           backgroundColor="#694fad"
           centerComponent={{
             text: " DANH SÁCH PHÒNG ",
             style: { color: "white" },
           }}
-          rightComponent={() => (
-            <FontAwesome name="search" size={24} color="#ffff" />
-          )}
         />
 
         <View style={styles.container}>
@@ -56,18 +68,32 @@ class ListRoom extends Component {
                   uri: l.image,
                 }}
               />
-              <View style={{ flexDirection: "column", marginTop: 20 }}>
+              <TouchableOpacity
+                onPress={() =>
+                  this.props.navigation.navigate("DetailRoom", { id: l.id })
+                }
+                style={{
+                  flexDirection: "column",
+                  marginTop: 20,
+                  marginLeft: 5,
+                }}
+              >
                 <Text style={{ fontWeight: "bold", fontSize: 16 }}>
-                 {l.title}
+                  {l.title}
                 </Text>
                 <Text style={{ fontWeight: "bold", color: "#aaaaaa" }}>
                   Giá: {l.price}
                 </Text>
-              </View>
+              </TouchableOpacity>
               <View style={styles.body}>
-                <View style={styles.button}>
+                <TouchableOpacity
+                  onPress={() =>
+                    this.props.navigation.navigate("OrderRoom", { id: l.id })
+                  }
+                  style={styles.button}
+                >
                   <AntDesign name="pluscircleo" size={24} color="#ffff" />
-                </View>
+                </TouchableOpacity>
               </View>
             </View>
           ))}
@@ -88,7 +114,7 @@ const styles = StyleSheet.create({
   item: {
     borderWidth: 1,
     height: 100,
-    marginTop:10,
+    marginTop: 10,
     borderRadius: 5,
     borderColor: "#694fad",
     flexDirection: "row",
